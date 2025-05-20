@@ -28,10 +28,10 @@ public class Group {
         float sum = 0.0F;
 
         for(int i = 0; i < this.students.size(); ++i) {
-            sum += ((Student)this.students.get(i)).getQuantity();
+            sum += this.students.get(i).getQuantity();
         }
 
-        return sum / (float)this.students.size();
+        return sum / this.students.size();
     }
 
     public int size() {

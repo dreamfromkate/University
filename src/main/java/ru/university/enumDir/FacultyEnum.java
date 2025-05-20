@@ -8,7 +8,7 @@ public enum FacultyEnum {
 
     private String title;
 
-    public FacultyEnum(String title) {
+    FacultyEnum(String title) {
         this.title = title;
     }
 

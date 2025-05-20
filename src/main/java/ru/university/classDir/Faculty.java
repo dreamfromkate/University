@@ -20,7 +20,6 @@ public class Faculty {
     public void addGroup(Group group) {
         this.group.add(group);
     }
-
     public List<Group> getGroup() {
         return this.group;
     }
@@ -29,21 +28,22 @@ public class Faculty {
         float sum = 0.0F;
         int count = 0;
 
-        for(int i = 0; i < ((Group)this.group.get(i)).size(); ++i) {
-            sum += ((Group)this.group.get(i)).avgMark();
-            if (((Group)this.group.get(i)).avgMark() > 0.0F) {
-                ++count;
+        for(int i = 0; i < this.group.size(); i++) {
+            sum += this.group.get(i).avgMark();
+
+            if (this.group.get(i).avgMark() > 0.0F) {
+                count++;
             }
         }
 
-        return sum / (float)count;
+        return sum / count;
     }
 
     public void printFaculty() {
         System.out.println("Список групп факультета " + this.name.getTitle() + ":");
 
-        for(int i = 0; i < this.group.size(); ++i) {
-            System.out.println(i + 1 + ". " + ((Group)this.group.get(i)).getNumberGroup());
+        for(int i = 0; i < this.group.size(); i++) {
+            System.out.println(i + 1 + ". " + this.group.get(i).getNumberGroup());
         }
 
     }
@@ -51,15 +51,15 @@ public class Faculty {
     public void printAvgMark() {
         System.out.println("Список среднего балла по факультету " + this.name.getTitle() + ":");
 
-        for(int i = 0; i < this.group.size(); ++i) {
-            System.out.println(i + 1 + ". " + ((Group)this.group.get(i)).getNumberGroup() + " - " + this.avgMark(i));
+        for(int i = 0; i < this.group.size(); i++) {
+            System.out.println(i + 1 + ". " + this.group.get(i).getNumberGroup() + " - " + this.avgMark(i));
         }
 
         System.out.println("\nСредний балл успеваемости по факультету: " + this.avgFaculMark());
     }
 
     private float avgMark(int i) {
-        return ((Group)this.group.get(i)).avgMark() > 0.0F ? ((Group)this.group.get(i)).avgMark() : 0.0F;
+        return this.group.get(i).avgMark() > 0.0F ? this.group.get(i).avgMark() : 0.0F;
     }
 }
 
